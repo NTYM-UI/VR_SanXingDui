@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/ProceduralTerrainPainter/_Demo/DemoScene.unity
+    guid: b9f1a965ac3e580489af7e84e004a320
   m_configObjects:
     Unity.XR.PICO.LivePreview.Settings: {fileID: 11400000, guid: 84598032abd34b446bf8e358940d772f, type: 2}
     Unity.XR.PXR.Settings: {fileID: 11400000, guid: 5c40458cf37bb3346aae4a99b05c6181, type: 2}
