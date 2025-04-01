@@ -17,7 +17,7 @@ public class ChangeMetallicOnCollision : MonoBehaviour
         if (uiCanvas != null)
         {
             uiCanvas.gameObject.SetActive(false);
-            UnityEngine.Debug.LogError("UI Canvas 已隐藏！");
+            UnityEngine.Debug.Log("UI Canvas 已隐藏！");
         }
         else
         {
@@ -27,6 +27,7 @@ public class ChangeMetallicOnCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        UnityEngine.Debug.Log("碰撞事件触发！");
         // 当发生碰撞时，检查目标物体是否有效
         if (targetRenderer != null)
         {
@@ -50,11 +51,13 @@ public class ChangeMetallicOnCollision : MonoBehaviour
 
         // 设置金属度
         mat.SetFloat("_Metallic", metallicValue);
+        UnityEngine.Debug.Log("已改变金属度！");
 
         // 显示 Canvas
         if (uiCanvas != null)
         {
             uiCanvas.gameObject.SetActive(true); // 确保 Canvas 的 GameObject 被激活
+            UnityEngine.Debug.Log("UI Canvas 已激活！");
         }
         else
         {
