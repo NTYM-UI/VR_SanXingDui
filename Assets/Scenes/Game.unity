@@ -1102,6 +1102,8 @@ MonoBehaviour:
   newMetallic: 0.3
   uiCanvas: {fileID: 1791068032}
   combinedObject: {fileID: 883750080}
+  floatTargetHeight: 2
+  floatSpeed: 1
 --- !u!1 &328063751
 GameObject:
   m_ObjectHideFlags: 0
@@ -2858,7 +2860,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639816933}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd9f82377aeb9704193bd866d119aaa5, type: 3}
   m_Name: 
@@ -3116,7 +3118,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    m_Reference: {fileID: -8061240218431744966, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &738012597
 GameObject:
   m_ObjectHideFlags: 0
@@ -3656,15 +3658,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5a3982d220a0cea4899832643cee860c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.0356659
+      value: 1.137
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5a3982d220a0cea4899832643cee860c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.689
+      value: 0.367
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5a3982d220a0cea4899832643cee860c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.36003613
+      value: 0.555
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5a3982d220a0cea4899832643cee860c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4257,7 +4259,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    m_Reference: {fileID: -8061240218431744966, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_SelectActionValue:
     m_UseReference: 1
     m_Action:
@@ -4269,7 +4271,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    m_Reference: {fileID: -8061240218431744966, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ActivateAction:
     m_UseReference: 1
     m_Action:
