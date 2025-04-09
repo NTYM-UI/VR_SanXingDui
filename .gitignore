@@ -77,3 +77,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 *.meta
 *.log
+ps_driver_sdk.log
