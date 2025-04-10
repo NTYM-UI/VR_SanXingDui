@@ -24,9 +24,9 @@ MonoBehaviour:
   enableETFR: 0
   latelatching: 0
   latelatchingDebug: 0
-  enableSubsampled: 0
+  enableSubsampled: 1
   bodyTracking: 0
-  adaptiveResolution: 0
+  adaptiveResolution: 1
   stageMode: 0
   videoSeeThrough: 0
   spatialAnchor: 0
@@ -42,5 +42,5 @@ MonoBehaviour:
   arFoundation: 0
   mrSafeguard: 0
   enableRecommendMSAA: 0
-  recommendSubsamping: 0
+  recommendSubsamping: 1
   recommendMSAA: 1
