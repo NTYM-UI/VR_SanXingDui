@@ -127,6 +127,7 @@ public class PICO4UltraInputHandler : MonoBehaviour
         Vector2 joystickDirection;
         if (device.TryGetFeatureValue(CommonUsages.primary2DAxis, out joystickDirection))
         {
+            Debug.Log("成功获取手柄摇杆");
             Debug.Log($"{handName} joystick direction: ({joystickDirection.x}, {joystickDirection.y})");
         }
 
