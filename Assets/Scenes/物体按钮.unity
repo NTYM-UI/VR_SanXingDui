@@ -1998,6 +1998,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 3.88
       objectReference: {fileID: 0}
+    - target: {fileID: 2722275543848926639, guid: 94aa6ff9665aff843998be09db04e245, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5015415391883453526, guid: 94aa6ff9665aff843998be09db04e245, type: 3}
       propertyPath: m_CastShadows
       value: 2
