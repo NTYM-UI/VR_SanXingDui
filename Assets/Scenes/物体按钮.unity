@@ -151,7 +151,7 @@ Transform:
   m_GameObject: {fileID: 199041876}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -25.23, y: 2.5, z: -0.7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -354,7 +354,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1913900856}
         m_TargetAssemblyTypeName: AutoAnimationController, Assembly-CSharp
         m_MethodName: PlayAnimation
         m_Mode: 1
@@ -413,9 +413,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 657070840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 632a2aced9a37ed47a9a7e0cece2679d, type: 3}
+  m_Script: {fileID: 11500000, guid: d6c3fba8310a8e34290b366225ffdd79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetObjects:
+  - {fileID: 657070840}
+  - {fileID: 2121656487}
+  - {fileID: 794648738}
+  - {fileID: 1746180795}
 --- !u!1 &732154687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1807,7 +1812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cba91f3f2a8541c46826e8da4144ee5f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.63
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cba91f3f2a8541c46826e8da4144ee5f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2760,23 +2765,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a0a59ff3d9e1004aa5b0df352d4eb11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  object1: {fileID: 657070840}
-  object2: {fileID: 2121656487}
---- !u!114 &1913900855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1913900853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6c3fba8310a8e34290b366225ffdd79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetObjects:
-  - {fileID: 657070840}
-  - {fileID: 2121656487}
+  object1: {fileID: 794648738}
+  object2: {fileID: 1746180795}
 --- !u!114 &1913900856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2883,9 +2873,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2916396103321262281, guid: 1fd5fadb37816b44fbd98e6501134b1f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1913900856}
-    - targetCorrespondingSourceObject: {fileID: 2916396103321262281, guid: 1fd5fadb37816b44fbd98e6501134b1f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1913900855}
     - targetCorrespondingSourceObject: {fileID: 2916396103321262281, guid: 1fd5fadb37816b44fbd98e6501134b1f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1913900854}
