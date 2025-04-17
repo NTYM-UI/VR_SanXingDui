@@ -13,13 +13,13 @@ public class VRController : MonoBehaviour
     public float fadeInDuration = 3f;
     public void StartVRScene()
     {
-        // 开始淡入（持续2秒）
+        // 开始淡出（持续2秒）
         fadeController.StartFadeOut(fadeOutDuration);
     }
 
     public void ExitVRScene()
     {
-        // 开始淡出（持续3秒）
+        // 开始淡入（持续3秒）
         fadeController.StartFadeIn(3f);
     }
 }
