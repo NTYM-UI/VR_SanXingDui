@@ -60,7 +60,8 @@ namespace Boxophobic.StyledGUI
         public override void OnGUI(Rect position, MaterialProperty prop, String label, MaterialEditor materialEditor)
         {
             GUI.enabled = true;
-            GUI.color = Color.white;
+            //GUI.color = Color.white;
+            //GUI.contentColor = Color.white;
             EditorGUI.indentLevel = 0;
 
             if (conditions == "")
@@ -110,6 +111,10 @@ namespace Boxophobic.StyledGUI
             if (prop.floatValue < 0.5f)
             {
                 isEnabled = false;
+            }
+            else
+            {
+                isEnabled = true;
             }
 
             isEnabled = StyledGUI.DrawInspectorCategory(category, isEnabled, isColapsable, top, down);

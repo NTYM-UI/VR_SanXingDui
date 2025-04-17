@@ -10,6 +10,7 @@ namespace Boxophobic.StyledGUI
     {
         public static void DrawInspectorCategory(string bannerText)
         {
+            GUI.contentColor = Color.white;
             GUI.color = new Color(1, 1, 1, 0.9f);
 
             var fullRect = GUILayoutUtility.GetRect(0, 0, 18, 0);
@@ -27,6 +28,7 @@ namespace Boxophobic.StyledGUI
 
         public static bool DrawInspectorCategory(string bannerText, bool enabled, bool colapsable, float top, float down)
         {
+            GUI.contentColor = Color.white;
             GUI.color = new Color(1, 1, 1, 0.9f);
 
             if (colapsable)

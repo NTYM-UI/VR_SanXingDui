@@ -3992,6 +3992,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "VR\u8BBE\u5907"
       objectReference: {fileID: 0}
+    - target: {fileID: 8373530994795696684, guid: 720af6e13d873284f8245c381aea1daf, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8654813556596724139, guid: 720af6e13d873284f8245c381aea1daf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.36

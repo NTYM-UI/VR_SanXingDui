@@ -3,16 +3,16 @@ using UnityEngine;
 
 public static class SkyboxExtendedWindows
 {
-    [MenuItem("Window/BOXOPHOBIC/Skybox Cubemap Extended/Publisher Page", false, 8000)]
-    public static void MoreAssets()
-    {
-        Application.OpenURL("https://assetstore.unity.com/publishers/20529");
-    }
-
-    [MenuItem("Window/BOXOPHOBIC/Skybox Cubemap Extended/Discord Server", false, 8001)]
+    [MenuItem("Window/BOXOPHOBIC/Skybox Cubemap Extended/Discord Server", false, 8000)]
     public static void Discord()
     {
         Application.OpenURL("https://discord.com/invite/znxuXET");
+    }
+
+    [MenuItem("Window/BOXOPHOBIC/Skybox Cubemap Extended/Publisher Page", false, 8001)]
+    public static void MoreAssets()
+    {
+        Application.OpenURL("https://assetstore.unity.com/publishers/20529");
     }
 
     [MenuItem("Window/BOXOPHOBIC/Skybox Cubemap Extended/Documentation", false, 8002)]
