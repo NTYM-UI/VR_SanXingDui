@@ -6,6 +6,6 @@ public class ChangeSceneName : MonoBehaviour
 {
     public void KongBaiScene()
     {
-        SceneLoader.Instance.ChangeScene("视频播放场景");
+        SceneLoader.Instance.ChangeScene("视频播放和动画场景");
     }
 }
