@@ -16,8 +16,12 @@ public class ChangeMetallicOnCollision : MonoBehaviour
     public GameObject combinedObject;
 
     // 悬浮效果的参数
-    public float floatTargetHeight = 1.0f; // 悬浮目标高度
+    public float floatTargetHeight = 0.3f; // 悬浮目标高度
     public float floatSpeed = 1.0f; // 悬浮速度
+
+    // 音效相关
+    public AudioClip sweepSound; // 播放的音效
+    private AudioSource audioSource; // 音频源
 
     private Vector3 originalPosition; // 记录组合物体的原始位置
     private bool isFloating = false; // 是否正在悬浮
@@ -46,6 +50,11 @@ public class ChangeMetallicOnCollision : MonoBehaviour
         {
             UnityEngine.Debug.LogError("组合后的完整物体未设置！");
         }
+
+        // 初始化音效
+        audioSource = gameObject.AddComponent<AudioSource>(); // 添加 AudioSource 组件
+        audioSource.clip = sweepSound; // 设置音效
+        audioSource.playOnAwake = false; // 不在启动时自动播放
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -57,6 +66,16 @@ public class ChangeMetallicOnCollision : MonoBehaviour
             // 当发生碰撞时，检查目标物体数组是否有效
             if (targetRenderers != null && targetRenderers.Length > 0)
             {
+                // 播放音效
+                if (sweepSound != null)
+                {
+                    audioSource.Play();
+                }
+                else
+                {
+                    UnityEngine.Debug.LogError("未设置音效文件！");
+                }
+
                 // 启动协程延迟两秒后改变金属度
                 StartCoroutine(DelayChangeMetallic(newMetallic));
             }
