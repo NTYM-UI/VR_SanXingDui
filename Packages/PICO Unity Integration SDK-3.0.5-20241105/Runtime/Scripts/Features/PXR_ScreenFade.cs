@@ -39,10 +39,10 @@ namespace Unity.XR.PXR
             CreateFadeMesh();
             SetCurrentAlpha(0);
         }
-        void OnEnable()
-        {
-            StartCoroutine(ScreenFade());
-        }
+        //void OnEnable()
+        //{
+        //    StartCoroutine(ScreenFade());
+        //}
         void OnDestroy()
         {
             DestoryGradientMesh();
@@ -209,6 +209,43 @@ namespace Unity.XR.PXR
 
             if (gradientMeshFilter != null)
                 Destroy(gradientMeshFilter);
+        }
+        public void StartFadeIn(float duration)
+        {
+            gradientTime = duration;
+            StartCoroutine(FadeInCoroutine());
+        }
+
+        public void StartFadeOut(float duration)
+        {
+            gradientTime = duration;
+            StartCoroutine(FadeOutCoroutine());
+        }
+
+        IEnumerator FadeInCoroutine()
+        {
+            float timer = 0f;
+            while (timer < gradientTime)
+            {
+                timer += Time.deltaTime;
+                nowFadeAlpha = Mathf.Lerp(0f, 1f, timer / gradientTime);
+                SetAlpha();
+                yield return null;
+            }
+            SetAlpha(); // 确保最终状态
+        }
+
+        IEnumerator FadeOutCoroutine()
+        {
+            float timer = 0f;
+            while (timer < gradientTime)
+            {
+                timer += Time.deltaTime;
+                nowFadeAlpha = Mathf.Lerp(1f, 0f, timer / gradientTime);
+                SetAlpha();
+                yield return null;
+            }
+            SetAlpha(); // 确保最终状态
         }
     }
 }

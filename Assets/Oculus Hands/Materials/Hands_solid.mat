@@ -43,5 +43,5 @@ Material:
     m_Floats:
     - _SpecularHighlights: 0
     m_Colors:
-    - _Color: {r: 0.9685534, g: 0.89847064, b: 0.6061073, a: 0.75}
+    - _Color: {r: 0.9245283, g: 0.9158063, b: 0.9158063, a: 0.75}
   m_BuildTextureStacks: []

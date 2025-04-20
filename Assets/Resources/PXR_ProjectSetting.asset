@@ -42,5 +42,5 @@ MonoBehaviour:
   arFoundation: 0
   mrSafeguard: 0
   enableRecommendMSAA: 0
-  recommendSubsamping: 0
+  recommendSubsamping: 1
   recommendMSAA: 1

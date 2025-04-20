@@ -17,7 +17,7 @@ public class ChangeMetallicOnCollision : MonoBehaviour
 
     // 悬浮效果的参数
     public float floatTargetHeight = 0.3f; // 悬浮目标高度
-    public float floatSpeed = 1.0f; // 悬浮速度
+    public float floatSpeed = 0.5f; // 悬浮速度
 
     // 音效相关
     public AudioClip sweepSound; // 播放的音效
@@ -148,7 +148,22 @@ public class ChangeMetallicOnCollision : MonoBehaviour
                     renderer.gameObject.SetActive(false);
                 }
             }
+
+            // 在悬浮效果完成后切换场景
+            StartCoroutine(SwitchSceneAfterFloating());
         }
+    }
+
+    private IEnumerator SwitchSceneAfterFloating()
+    {
+        // 等待悬浮效果完成
+        while (!hasReachedTargetHeight)
+        {
+            yield return null;
+        }
+
+        // 悬浮效果完成后切换场景
+        SceneLoader.Instance.ChangeScene("视频介绍"); // 替换为你的目标场景名称
     }
 
     private void Update()
@@ -171,6 +186,12 @@ public class ChangeMetallicOnCollision : MonoBehaviour
                     combinedObject.transform.position = targetPosition; // 确保精确到达目标位置
                 }
             }
+        }
+        // 检查是否需要停止音效
+        if (!isFloating && audioSource.isPlaying)
+        {
+            audioSource.Stop(); // 停止音效
+            UnityEngine.Debug.Log("音效已停止！");
         }
     }
 
