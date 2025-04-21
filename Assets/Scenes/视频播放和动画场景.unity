@@ -151,8 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e7fdbd21819c3448d9f0f20735df87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeController: {fileID: 66809094}
-  fadeOutDuration: 1
 --- !u!4 &55163643
 Transform:
   m_ObjectHideFlags: 0
@@ -498,11 +496,11 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 562606192}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 934ae6cd1ae731a4f97f2c8938f2f80d, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 9c464c251cdc9c44fa0c97e0e22ccbb9, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: 6339becc6b67a724c9ba7b86d656de72, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: fa893e11eafe05c41af0289ad9df4176, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
@@ -554,7 +552,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 6339becc6b67a724c9ba7b86d656de72, type: 2}
+  m_Texture: {fileID: 8400000, guid: fa893e11eafe05c41af0289ad9df4176, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
