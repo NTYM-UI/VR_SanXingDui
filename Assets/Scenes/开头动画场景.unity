@@ -293,7 +293,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3696599330976133467, guid: bbe258c7855d6764ca0d2546dea6e3bb, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbe258c7855d6764ca0d2546dea6e3bb, type: 3}
@@ -580,7 +581,7 @@ MonoBehaviour:
   m_Camera: {fileID: 1351883301}
   m_OriginBaseGameObject: {fileID: 1423733981}
   m_CameraFloorOffsetObject: {fileID: 1084218987}
-  m_RequestedTrackingOriginMode: 0
+  m_RequestedTrackingOriginMode: 2
   m_CameraYOffset: 1.1176
 --- !u!4 &1423733984
 Transform:
