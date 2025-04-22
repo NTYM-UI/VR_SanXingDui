@@ -20,6 +20,6 @@ public class VRController : MonoBehaviour
     public void ExitVRScene()
     {
         // 开始淡入（持续3秒）
-        fadeController.StartFadeIn(3f);
+        fadeController.StartFadeIn(fadeInDuration);
     }
 }

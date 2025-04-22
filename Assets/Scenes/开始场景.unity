@@ -205,7 +205,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1913900862}
+      - m_Target: {fileID: 1913900868}
         m_TargetAssemblyTypeName: AutoAnimationController, Assembly-CSharp
         m_MethodName: PlayAnimation
         m_Mode: 1
@@ -277,7 +277,6 @@ GameObject:
   m_Component:
   - component: {fileID: 732154689}
   - component: {fileID: 732154688}
-  - component: {fileID: 732154690}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -362,29 +361,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 12.985, y: 104.336, z: 117.444}
---- !u!114 &732154690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732154687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 3
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
 --- !u!1 &788402960
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,7 +515,6 @@ GameObject:
   m_Component:
   - component: {fileID: 857983960}
   - component: {fileID: 857983959}
-  - component: {fileID: 857983958}
   m_Layer: 0
   m_Name: Point Light (2)
   m_TagString: Untagged
@@ -547,29 +522,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &857983958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 857983957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 3
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
 --- !u!108 &857983959
 Light:
   m_ObjectHideFlags: 0
@@ -583,7 +535,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 3.08
-  m_Range: 49.49
+  m_Range: 12.1
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -775,11 +727,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &869448091 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2784403847726662720, guid: 720af6e13d873284f8245c381aea1daf, type: 3}
-  m_PrefabInstance: {fileID: 3323718233295400911}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1146595226
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,50 +898,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 8373530994795696684, guid: 720af6e13d873284f8245c381aea1daf, type: 3}
   m_PrefabInstance: {fileID: 3323718233295400911}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1467937736
+--- !u!114 &1467937740 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8159717762540573089, guid: 720af6e13d873284f8245c381aea1daf, type: 3}
+  m_PrefabInstance: {fileID: 3323718233295400911}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 869448091}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ee8dd1042c84fa4fa2411e8c4ebcc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_AllowHDROutput: 1
-  m_UseScreenCoordOverride: 0
-  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
-  m_TaaSettings:
-    m_Quality: 3
-    m_FrameInfluence: 0.1
-    m_JitterScale: 1
-    m_MipBias: 0
-    m_VarianceClampScale: 0.9
-    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &1484770305
 GameObject:
   m_ObjectHideFlags: 0
@@ -3742,7 +3656,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1743822778}
   - component: {fileID: 1743822777}
-  - component: {fileID: 1743822776}
   m_Layer: 0
   m_Name: Point Light (1)
   m_TagString: Untagged
@@ -3750,29 +3663,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1743822776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1743822775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 3
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
 --- !u!108 &1743822777
 Light:
   m_ObjectHideFlags: 0
@@ -3786,7 +3676,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 3.08
-  m_Range: 49.49
+  m_Range: 21.98
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -3989,7 +3879,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782190702}
   m_CullTransparentMesh: 1
---- !u!114 &1913900862
+--- !u!114 &1913900868
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3998,7 +3888,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 813749989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dad62c9d923e5a547bc0e35a7b1963c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c61c5fb2eb2727418b25a477f4ddbfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   triggerName: PlayAnimation
@@ -4418,6 +4308,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6242958831624123248, guid: 720af6e13d873284f8245c381aea1daf, type: 3}
+      propertyPath: fadeController
+      value: 
+      objectReference: {fileID: 1467937740}
     - target: {fileID: 8373530994795696684, guid: 720af6e13d873284f8245c381aea1daf, type: 3}
       propertyPath: m_ClearFlags
       value: 1
@@ -4463,17 +4357,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
+    - {fileID: 0}
     - {fileID: 8465539278919796985, guid: 720af6e13d873284f8245c381aea1daf, type: 3}
-    - {fileID: 8159717762540573089, guid: 720af6e13d873284f8245c381aea1daf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5313137584749179802, guid: 720af6e13d873284f8245c381aea1daf, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 1913900862}
-    - targetCorrespondingSourceObject: {fileID: 2784403847726662720, guid: 720af6e13d873284f8245c381aea1daf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1467937736}
+      addedObject: {fileID: 1913900868}
   m_SourcePrefab: {fileID: 100100000, guid: 720af6e13d873284f8245c381aea1daf, type: 3}
 --- !u!1001 &6674509965215728492
 PrefabInstance:
