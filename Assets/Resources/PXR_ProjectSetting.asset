@@ -24,7 +24,7 @@ MonoBehaviour:
   enableETFR: 0
   latelatching: 0
   latelatchingDebug: 0
-  enableSubsampled: 1
+  enableSubsampled: 0
   bodyTracking: 0
   adaptiveResolution: 0
   stageMode: 0
@@ -34,7 +34,7 @@ MonoBehaviour:
   sharedAnchor: 0
   spatialMesh: 0
   meshLod: 0
-  superResolution: 1
+  superResolution: 0
   normalSharpening: 0
   qualitySharpening: 0
   fixedFoveatedSharpening: 0
@@ -42,5 +42,5 @@ MonoBehaviour:
   arFoundation: 0
   mrSafeguard: 0
   enableRecommendMSAA: 0
-  recommendSubsamping: 0
+  recommendSubsamping: 1
   recommendMSAA: 1

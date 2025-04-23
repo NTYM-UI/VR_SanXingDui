@@ -148,15 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
   m_Name: Demo
   m_EditorClassIdentifier: 
-  settings:
-  - {fileID: 114094930955229750}
-  - {fileID: 114753784628472484}
-  - {fileID: 114905349723521868}
-  - {fileID: 114059884413532516}
-  - {fileID: 114232185289346146}
-  - {fileID: 114288678441462590}
-  - {fileID: 114964227162046496}
-  - {fileID: -5996071343239400065}
 --- !u!114 &114059884413532516
 MonoBehaviour:
   m_ObjectHideFlags: 3
