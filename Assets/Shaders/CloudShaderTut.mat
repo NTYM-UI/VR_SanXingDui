@@ -50,7 +50,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClipping: 0
+    - _AlphaClipping: 1
     - _BUILTIN_AlphaClip: 0
     - _BUILTIN_Blend: 0
     - _BUILTIN_CullMode: 2
@@ -62,15 +62,15 @@ Material:
     - _BUILTIN_ZTest: 4
     - _BUILTIN_ZWrite: 1
     - _BUILTIN_ZWriteControl: 0
-    - _CloudsAlpha: 0.56
-    - _CloudsPower: 0.2
-    - _CloudsScale: 120
-    - _DistortScale: 60
+    - _CloudsAlpha: 4.39
+    - _CloudsPower: 0.25
+    - _CloudsScale: 49.5
+    - _DistortScale: 37.3
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _VertexOffset: 0.14
+    - _VertexOffset: 0.15
     m_Colors:
-    - _CloudsColor: {r: 1.0637307, g: 1.5171876, b: 2.4335716, a: 1}
+    - _CloudsColor: {r: 1.3503741, g: 1.3503741, b: 1.3503741, a: 1}
     - _CloudsSpeed: {r: 0.005, g: 0.002, b: 0, a: 0}
     - _DistortSpeed: {r: 0.05, g: 0.01, b: 0, a: 0}
   m_BuildTextureStacks: []
