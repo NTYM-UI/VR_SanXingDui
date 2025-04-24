@@ -54,7 +54,6 @@ public class LoginMain : MonoBehaviour
             if (reader.Read())
             {
                 LoginPanelTileLable.text = "欢迎你：" + name1.ToString() + "即将进入游戏...";
-                // 在悬浮效果完成后切换场景
                 StartCoroutine(ChangeToMainScene());
             }
             else
