@@ -10,7 +10,7 @@ public class ChangeMetallicOnCollision : MonoBehaviour
     public float newMetallic = 0.3f;
 
     // 引用 UI Canvas
-    public Canvas uiCanvas;
+    //public Canvas uiCanvas;
 
     // 引用组合后的完整物体
     public GameObject combinedObject;
@@ -30,7 +30,7 @@ public class ChangeMetallicOnCollision : MonoBehaviour
     private void Start()
     {
         // 确保 Canvas 在游戏开始时是隐藏的
-        if (uiCanvas != null)
+        /*if (uiCanvas != null)
         {
             uiCanvas.gameObject.SetActive(false);
             UnityEngine.Debug.Log("UI Canvas 已隐藏！");
@@ -38,7 +38,7 @@ public class ChangeMetallicOnCollision : MonoBehaviour
         else
         {
             UnityEngine.Debug.LogError("UI Canvas 未设置！");
-        }
+        }*/
 
         // 确保组合后的完整物体在游戏开始时是隐藏的
         if (combinedObject != null)
@@ -117,7 +117,7 @@ public class ChangeMetallicOnCollision : MonoBehaviour
         if (count == targetRenderers.Length)
         {
             // 显示 Canvas
-            if (uiCanvas != null)
+            /*if (uiCanvas != null)
             {
                 uiCanvas.gameObject.SetActive(true); // 确保 Canvas 的 GameObject 被激活
                 UnityEngine.Debug.Log("UI Canvas 已激活！");
@@ -125,7 +125,7 @@ public class ChangeMetallicOnCollision : MonoBehaviour
             else
             {
                 UnityEngine.Debug.LogError("UI Canvas 未设置！");
-            }
+            }*/
 
             // 显示组合后的完整物体
             if (combinedObject != null)
