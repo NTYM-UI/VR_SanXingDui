@@ -10,16 +10,16 @@ EditorBuildSettings:
     guid: b9f1a965ac3e580489af7e84e004a320
   - enabled: 0
     path: Assets/Scenes/login.unity
-    guid: efa78454d88b5b04a8e0a26d330809c4
+    guid: 779e22eaf3b99804a9cc9ab0910cf587
   - enabled: 0
     path: "Assets/Scenes/\u5730\u5F62\u5236\u4F5C.unity"
     guid: 910d19fc42d8814488e9a6f9928fe916
   - enabled: 1
     path: Assets/Scenes/Game.unity
-    guid: 12684ee8e550dd64bb1328550ab46c1c
-  - enabled: 0
+    guid: 83bae3ab7b1d56b46a04cc9b5df5f3d6
+  - enabled: 1
     path: "Assets/Scenes/\u89C6\u9891\u4ECB\u7ECD.unity"
-    guid: 8311c3b8ac3308f4c943b1549b27b3f9
+    guid: 62c42079abcb4a446acc46e242366b54
   m_configObjects:
     Unity.XR.PICO.LivePreview.Settings: {fileID: 11400000, guid: 84598032abd34b446bf8e358940d772f, type: 2}
     Unity.XR.PXR.Settings: {fileID: 11400000, guid: 5c40458cf37bb3346aae4a99b05c6181, type: 2}
