@@ -6,6 +6,9 @@ TagManager:
   tags:
   - TargetTag
   - Camera0
+  - Tag1
+  - Tag2
+  - Tag3
   layers:
   - Default
   - TransparentFX

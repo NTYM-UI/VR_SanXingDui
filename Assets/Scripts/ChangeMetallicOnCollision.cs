@@ -9,9 +9,6 @@ public class ChangeMetallicOnCollision : MonoBehaviour
     // 设置新的金属度值（范围是0到1）
     public float newMetallic = 0.3f;
 
-    // 引用 UI Canvas
-    //public Canvas uiCanvas;
-
     // 引用组合后的完整物体
     public GameObject combinedObject;
 
@@ -27,19 +24,11 @@ public class ChangeMetallicOnCollision : MonoBehaviour
     private bool isFloating = false; // 是否正在悬浮
     private bool hasReachedTargetHeight = false; // 是否已达到目标高度
 
+    // 用于记录每个物体的清扫状态
+    private bool[] cleanedStates;
+
     private void Start()
     {
-        // 确保 Canvas 在游戏开始时是隐藏的
-        /*if (uiCanvas != null)
-        {
-            uiCanvas.gameObject.SetActive(false);
-            UnityEngine.Debug.Log("UI Canvas 已隐藏！");
-        }
-        else
-        {
-            UnityEngine.Debug.LogError("UI Canvas 未设置！");
-        }*/
-
         // 确保组合后的完整物体在游戏开始时是隐藏的
         if (combinedObject != null)
         {
@@ -55,103 +44,118 @@ public class ChangeMetallicOnCollision : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>(); // 添加 AudioSource 组件
         audioSource.clip = sweepSound; // 设置音效
         audioSource.playOnAwake = false; // 不在启动时自动播放
+
+        // 检查音效是否正确设置
+        if (sweepSound == null)
+        {
+            UnityEngine.Debug.LogError("未设置音效文件！");
+        }
+        else
+        {
+            UnityEngine.Debug.Log("音效文件已正确设置！");
+        }
+
+        // 初始化清扫状态数组
+        cleanedStates = new bool[targetRenderers.Length];
+        for (int i = 0; i < cleanedStates.Length; i++)
+        {
+            cleanedStates[i] = false;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         UnityEngine.Debug.Log("碰撞事件触发！");
-        // 检查碰撞物体是否具有特定的 Tag
-        if (collision.gameObject.CompareTag("TargetTag")) // 假设目标物体的 Tag 是 "TargetTag"
+        // 播放音效
+        if (sweepSound != null)
         {
-            // 当发生碰撞时，检查目标物体数组是否有效
-            if (targetRenderers != null && targetRenderers.Length > 0)
+            audioSource.Play();
+            UnityEngine.Debug.Log("播放音效！");
+        }
+        else
+        {
+            UnityEngine.Debug.LogError("未设置音效文件！");
+        }
+        // 检查碰撞物体是否是目标物体之一
+        for (int i = 0; i < targetRenderers.Length; i++)
+        {
+            if (collision.gameObject == targetRenderers[i].gameObject)
             {
-                // 播放音效
-                if (sweepSound != null)
+                // 如果该物体尚未被清扫，则标记为已清扫
+                if (!cleanedStates[i])
                 {
-                    audioSource.Play();
-                }
-                else
-                {
-                    UnityEngine.Debug.LogError("未设置音效文件！");
+                    cleanedStates[i] = true;
+                    UnityEngine.Debug.Log($"已清扫物体 {i + 1}");
+
+                    // 启动协程改变该物体的金属度
+                    StartCoroutine(ChangeMetallicForRenderer(targetRenderers[i], newMetallic));
                 }
 
-                // 启动协程延迟两秒后改变金属度
-                StartCoroutine(DelayChangeMetallic(newMetallic));
-            }
-            else
-            {
-                UnityEngine.Debug.LogError("目标Renderer数组未设置或为空！");
+                // 检查是否所有物体都已清扫
+                if (AllCleaned())
+                {
+                    UnityEngine.Debug.Log("所有目标物体都已清扫！");
+                    ShowCombinedObject();
+                }
+
+                break; // 退出循环
             }
         }
     }
 
-    // 协程：延迟两秒后改变金属度
-    private IEnumerator DelayChangeMetallic(float metallicValue)
+    // 协程：改变指定 Renderer 的金属度
+    private IEnumerator ChangeMetallicForRenderer(Renderer renderer, float metallicValue)
     {
-        // 等待两秒
-        yield return new WaitForSeconds(2.0f);
+        // 等待音效播放完成（假设音效长度为 1 秒）
+        yield return new WaitForSeconds(1.0f);
 
-        // 遍历目标物体数组，改变每个物体的金属度
-        int count = 0; // 用于计数已改变金属度的物体数量
+        // 获取目标物体的材质
+        Material mat = renderer.material;
+
+        // 设置金属度
+        mat.SetFloat("_Metallic", metallicValue);
+        UnityEngine.Debug.Log("已改变金属度！");
+    }
+
+    // 检查是否所有物体都已清扫
+    private bool AllCleaned()
+    {
+        foreach (bool cleaned in cleanedStates)
+        {
+            if (!cleaned)
+            {
+                return false; // 如果有任何物体未清扫，返回 false
+            }
+        }
+        return true; // 所有物体都已清扫
+    }
+
+    // 显示组合后的完整物体并启动悬浮效果
+    private void ShowCombinedObject()
+    {
+        if (combinedObject != null)
+        {
+            combinedObject.SetActive(true);
+            originalPosition = combinedObject.transform.position; // 记录原始位置
+            isFloating = true; // 开始悬浮效果
+            UnityEngine.Debug.Log("组合后的完整物体已显示！");
+        }
+        else
+        {
+            UnityEngine.Debug.LogError("组合后的完整物体未设置！");
+        }
+
+        // 隐藏所有目标物体
         foreach (Renderer renderer in targetRenderers)
         {
             if (renderer != null)
             {
-                // 获取目标物体的材质
-                Material mat = renderer.material;
-
-                // 设置金属度
-                mat.SetFloat("_Metallic", metallicValue);
-                UnityEngine.Debug.Log("已改变金属度！");
-
-                count++; // 每改变一个物体的金属度，计数加1
-            }
-            else
-            {
-                UnityEngine.Debug.LogError("目标Renderer数组中有未设置的元素！");
+                renderer.gameObject.SetActive(false);
             }
         }
 
-        // 检查是否所有目标物体的金属度都已改变
-        if (count == targetRenderers.Length)
-        {
-            // 显示 Canvas
-            /*if (uiCanvas != null)
-            {
-                uiCanvas.gameObject.SetActive(true); // 确保 Canvas 的 GameObject 被激活
-                UnityEngine.Debug.Log("UI Canvas 已激活！");
-            }
-            else
-            {
-                UnityEngine.Debug.LogError("UI Canvas 未设置！");
-            }*/
-
-            // 显示组合后的完整物体
-            if (combinedObject != null)
-            {
-                combinedObject.SetActive(true);
-                originalPosition = combinedObject.transform.position; // 记录原始位置
-                isFloating = true; // 开始悬浮效果
-                UnityEngine.Debug.Log("组合后的完整物体已显示！");
-            }
-            else
-            {
-                UnityEngine.Debug.LogError("组合后的完整物体未设置！");
-            }
-
-            // 隐藏所有目标物体
-            foreach (Renderer renderer in targetRenderers)
-            {
-                if (renderer != null)
-                {
-                    renderer.gameObject.SetActive(false);
-                }
-            }
-
-            // 在悬浮效果完成后切换场景
-            StartCoroutine(SwitchSceneAfterFloating());
-        }
+        // 在悬浮效果完成后切换场景
+        StartCoroutine(SwitchSceneAfterFloating());
     }
 
     private IEnumerator SwitchSceneAfterFloating()
@@ -163,6 +167,7 @@ public class ChangeMetallicOnCollision : MonoBehaviour
         }
 
         // 悬浮效果完成后切换场景
+        UnityEngine.Debug.Log("悬浮效果完成，准备切换场景！");
         SceneLoader.Instance.ChangeScene("视频介绍"); // 替换为你的目标场景名称
     }
 
@@ -184,6 +189,7 @@ public class ChangeMetallicOnCollision : MonoBehaviour
                 {
                     hasReachedTargetHeight = true;
                     combinedObject.transform.position = targetPosition; // 确保精确到达目标位置
+                    UnityEngine.Debug.Log("悬浮效果完成！");
                 }
             }
         }
