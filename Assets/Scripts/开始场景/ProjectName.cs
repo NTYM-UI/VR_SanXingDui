@@ -1,25 +1,27 @@
 using System.Collections;
 using UnityEngine;
 
-public class ChuanSongMen : MonoBehaviour
+public class ProjectName : MonoBehaviour
 {
-    public GameObject chuanSongMen; // 驼峰命名法
-    public float fadeDuration = 1f;
+    public GameObject projectName; // 驼峰命名法
+    public float fadeDurationAppear = 2f;
+    public float fadeDurationDisappear = 2f;
     private Material materialInstance;
     private Renderer objectRenderer; // 缓存Renderer引用
 
     void Start()
     {
         // 初始化
-        if (chuanSongMen != null)
+        if (projectName != null)
         {
-            objectRenderer = chuanSongMen.GetComponent<Renderer>();
+            objectRenderer = projectName.GetComponent<Renderer>();
             if (objectRenderer != null)
             {
                 materialInstance = new Material(objectRenderer.material);
                 objectRenderer.material = materialInstance;
             }
-            ChuanSongMenDisappear();
+            projectName.SetActive(false);
+            //ProjectNameAppear();
         }
         else
         {
@@ -28,27 +30,34 @@ public class ChuanSongMen : MonoBehaviour
     }
 
     // 显示传送门
-    public void ChuanSongMenAppear()
+    public void ProjectNameAppear()
     {
-        if (chuanSongMen != null)
+        if (projectName != null)
         {
-            chuanSongMen.SetActive(true);
-            StartCoroutine(FadeIn());
+            projectName.SetActive(true);
+            StartCoroutine(FadeAppear());
         }
     }
 
     // 隐藏传送门
-    public void ChuanSongMenDisappear()
+    public void ProjectNameDisappear()
     {
-        if (chuanSongMen != null)
+        if (projectName != null)
         {
-            chuanSongMen.SetActive(false);
-            StartCoroutine(FadeOut());
+            StartCoroutine(FadeAndDisappear());
         }
     }
 
+    // 组合淡出+隐藏的协程
+    private IEnumerator FadeAndDisappear()
+    {
+        yield return StartCoroutine(FadeDisappear()); // 先执行淡出
+        yield return new WaitForSeconds(fadeDurationDisappear); // 再等待2秒
+        projectName.SetActive(false); // 最后隐藏
+    }
+
     // 淡入协程
-    private IEnumerator FadeIn()
+    private IEnumerator FadeAppear()
     {
         if (objectRenderer == null || materialInstance == null) yield break;
 
@@ -56,9 +65,9 @@ public class ChuanSongMen : MonoBehaviour
         Color startColor = new Color(1, 1, 1, 0); // 完全透明
         Color endColor = Color.white; // 完全不透明
 
-        while (elapsedTime < fadeDuration)
+        while (elapsedTime < fadeDurationAppear)
         {
-            materialInstance.color = Color.Lerp(startColor, endColor, elapsedTime / fadeDuration);
+            materialInstance.color = Color.Lerp(startColor, endColor, elapsedTime / fadeDurationAppear);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -66,7 +75,7 @@ public class ChuanSongMen : MonoBehaviour
     }
 
     // 淡出协程
-    private IEnumerator FadeOut()
+    private IEnumerator FadeDisappear()
     {
         if (objectRenderer == null || materialInstance == null) yield break;
 
@@ -74,9 +83,9 @@ public class ChuanSongMen : MonoBehaviour
         Color startColor = Color.white; // 完全不透明
         Color endColor = new Color(1, 1, 1, 0); // 完全透明
 
-        while (elapsedTime < fadeDuration)
+        while (elapsedTime < fadeDurationDisappear)
         {
-            materialInstance.color = Color.Lerp(startColor, endColor, elapsedTime / fadeDuration);
+            materialInstance.color = Color.Lerp(startColor, endColor, elapsedTime / fadeDurationDisappear);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
