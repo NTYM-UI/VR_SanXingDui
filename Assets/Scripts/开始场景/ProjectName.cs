@@ -20,7 +20,7 @@ public class ProjectName : MonoBehaviour
                 materialInstance = new Material(objectRenderer.material);
                 objectRenderer.material = materialInstance;
             }
-            projectName.SetActive(false);
+            projectName.SetActive(true);
             //ProjectNameAppear();
         }
         else
