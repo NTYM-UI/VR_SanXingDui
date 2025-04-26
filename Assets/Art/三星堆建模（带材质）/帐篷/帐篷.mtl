@@ -1,17 +1,17 @@
-# Blender 4.3.2 MTL File: '石像生.blend'
+# Blender 4.3.2 MTL File: 'None'
 # www.blender.org
 
-newmtl 材质.013
+newmtl 材质.003
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
+d 1.000000
 illum 2
-map_Kd b1dafbc269a23466378ad2cd5e125d2.png
-map_d b1dafbc269a23466378ad2cd5e125d2.png
+map_Kd R-C_修复后.jpg
 
-newmtl 材质.014
+newmtl 材质.004
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
