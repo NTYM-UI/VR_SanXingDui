@@ -1059,7 +1059,6 @@ GameObject:
   - component: {fileID: 6742217930395145226}
   - component: {fileID: 6242958831624123248}
   - component: {fileID: 2416571110205683805}
-  - component: {fileID: 5223615264893307281}
   m_Layer: 0
   m_Name: "VR\u8BBE\u5907"
   m_TagString: Untagged
@@ -1160,19 +1159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6a84ba0e58d7244b5cca4849e18579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5223615264893307281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5313137584749179802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 344597316ce3f9d4fb538d2c923bc9f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ChuanSongmen: {fileID: 2947420483959773335, guid: 07085b33816950543bd6f10e908c4ede, type: 3}
 --- !u!1 &6261883459616826710
 GameObject:
   m_ObjectHideFlags: 0

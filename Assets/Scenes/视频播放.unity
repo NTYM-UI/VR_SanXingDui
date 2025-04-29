@@ -531,7 +531,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 562606194}
   nextSceneName: "\u52A8\u753B\u573A\u666F"
   fadeController: {fileID: 66809094}
-  fadeOutDuration: 5
+  fadeOutDuration: 3
 --- !u!1001 &726378513
 PrefabInstance:
   m_ObjectHideFlags: 0

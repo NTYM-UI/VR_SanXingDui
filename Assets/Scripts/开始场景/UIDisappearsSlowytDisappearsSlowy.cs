@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class ProjectName : MonoBehaviour
+public class UIDisappearsSlowy : MonoBehaviour
 {
-    public GameObject projectName; // 驼峰命名法
+    public GameObject objectName; // 驼峰命名法
     public float fadeDurationAppear = 2f;
     public float fadeDurationDisappear = 2f;
     private Material materialInstance;
@@ -12,15 +12,15 @@ public class ProjectName : MonoBehaviour
     void Start()
     {
         // 初始化
-        if (projectName != null)
+        if (objectName != null)
         {
-            objectRenderer = projectName.GetComponent<Renderer>();
+            objectRenderer = objectName.GetComponent<Renderer>();
             if (objectRenderer != null)
             {
                 materialInstance = new Material(objectRenderer.material);
                 objectRenderer.material = materialInstance;
             }
-            projectName.SetActive(true);
+            objectDisappear();
             //ProjectNameAppear();
         }
         else
@@ -29,20 +29,19 @@ public class ProjectName : MonoBehaviour
         }
     }
 
-    // 显示传送门
-    public void ProjectNameAppear()
+    // 显示物体
+    public void objectAppear()
     {
-        if (projectName != null)
+        if (objectName != null)
         {
-            projectName.SetActive(true);
-            StartCoroutine(FadeAppear());
+            StartCoroutine(FadeAndAppear());
         }
     }
 
-    // 隐藏传送门
-    public void ProjectNameDisappear()
+    // 隐藏物体
+    public void objectDisappear()
     {
-        if (projectName != null)
+        if (objectName != null)
         {
             StartCoroutine(FadeAndDisappear());
         }
@@ -51,9 +50,16 @@ public class ProjectName : MonoBehaviour
     // 组合淡出+隐藏的协程
     private IEnumerator FadeAndDisappear()
     {
-        yield return StartCoroutine(FadeDisappear()); // 先执行淡出
-        yield return new WaitForSeconds(fadeDurationDisappear); // 再等待2秒
-        projectName.SetActive(false); // 最后隐藏
+        objectName.SetActive(false); // 隐藏
+        yield return StartCoroutine(FadeDisappear()); // 执行淡出
+        //yield return new WaitForSeconds(fadeDurationDisappear); // 再等待2秒
+    }
+
+    private IEnumerator FadeAndAppear()
+    {
+        yield return StartCoroutine(FadeDisappear()); // 先执行淡出，让物体为透明
+        objectName.SetActive(true); //再显示
+        yield return StartCoroutine(FadeAppear()); // 再执行淡入
     }
 
     // 淡入协程
