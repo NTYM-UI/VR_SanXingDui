@@ -1,100 +1,60 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 public class UIDisappearsSlowy : MonoBehaviour
 {
-    public GameObject objectName; // 驼峰命名法
-    public float fadeDurationAppear = 2f;
-    public float fadeDurationDisappear = 2f;
-    private Material materialInstance;
-    private Renderer objectRenderer; // 缓存Renderer引用
+    public CanvasGroup canvasGroup;  // 拖拽你的CanvasGroup组件到这里
+    public float fadeSpeed = 2f;     // 渐变速度
+    public GameObject GameObject;
 
-    void Start()
+    private void Start()
     {
-        // 初始化
-        if (objectName != null)
-        {
-            objectRenderer = objectName.GetComponent<Renderer>();
-            if (objectRenderer != null)
-            {
-                materialInstance = new Material(objectRenderer.material);
-                objectRenderer.material = materialInstance;
-            }
-            objectDisappear();
-            //ProjectNameAppear();
-        }
-        else
-        {
-            Debug.LogError("ChuanSongMen GameObject is not assigned!", this);
-        }
+        GameObject.SetActive(false);
+        StartCoroutine(FadeTo(0));
+    }
+    // 显示方法（立即执行）
+    public void Show()
+    {
+        // 如果正在隐藏，先中断当前协程
+        GameObject.SetActive(true);
+        StopAllCoroutines();
+        StartCoroutine(FadeTo(1));
+    }
+ 
+    // 隐藏方法（立即执行）
+    public void Hide()
+    {
+        StartCoroutine(FadeAndHide());
     }
 
-    // 显示物体
-    public void objectAppear()
+    // 等待两秒后隐藏
+    private IEnumerator FadeAndHide()
     {
-        if (objectName != null)
+        yield return StartCoroutine(FadeTo(0)); // 先执行淡出
+        yield return new WaitForSeconds(fadeSpeed); // 再等待2秒
+        GameObject.SetActive(false); // 最后隐藏
+    }
+    // 通用渐变协程
+    private System.Collections.IEnumerator FadeTo(float targetAlpha)
+    {
+        // 确保CanvasGroup存在
+        if (canvasGroup == null) yield break;
+ 
+        // 立即设置初始值（防止协程重复启动时的闪烁）
+        canvasGroup.alpha = Mathf.Clamp01(canvasGroup.alpha);
+ 
+        while (!Mathf.Approximately(canvasGroup.alpha, targetAlpha))
         {
-            StartCoroutine(FadeAndAppear());
-        }
-    }
-
-    // 隐藏物体
-    public void objectDisappear()
-    {
-        if (objectName != null)
-        {
-            StartCoroutine(FadeAndDisappear());
-        }
-    }
-
-    // 组合淡出+隐藏的协程
-    private IEnumerator FadeAndDisappear()
-    {
-        objectName.SetActive(false); // 隐藏
-        yield return StartCoroutine(FadeDisappear()); // 执行淡出
-        //yield return new WaitForSeconds(fadeDurationDisappear); // 再等待2秒
-    }
-
-    private IEnumerator FadeAndAppear()
-    {
-        yield return StartCoroutine(FadeDisappear()); // 先执行淡出，让物体为透明
-        objectName.SetActive(true); //再显示
-        yield return StartCoroutine(FadeAppear()); // 再执行淡入
-    }
-
-    // 淡入协程
-    private IEnumerator FadeAppear()
-    {
-        if (objectRenderer == null || materialInstance == null) yield break;
-
-        float elapsedTime = 0f;
-        Color startColor = new Color(1, 1, 1, 0); // 完全透明
-        Color endColor = Color.white; // 完全不透明
-
-        while (elapsedTime < fadeDurationAppear)
-        {
-            materialInstance.color = Color.Lerp(startColor, endColor, elapsedTime / fadeDurationAppear);
-            elapsedTime += Time.deltaTime;
+            canvasGroup.alpha = Mathf.MoveTowards(
+                canvasGroup.alpha,
+                targetAlpha,
+                Time.deltaTime * fadeSpeed
+            );
             yield return null;
         }
-        materialInstance.color = endColor;
-    }
-
-    // 淡出协程
-    private IEnumerator FadeDisappear()
-    {
-        if (objectRenderer == null || materialInstance == null) yield break;
-
-        float elapsedTime = 0f;
-        Color startColor = Color.white; // 完全不透明
-        Color endColor = new Color(1, 1, 1, 0); // 完全透明
-
-        while (elapsedTime < fadeDurationDisappear)
-        {
-            materialInstance.color = Color.Lerp(startColor, endColor, elapsedTime / fadeDurationDisappear);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        materialInstance.color = endColor;
+ 
+        // 确保最终值精确
+        canvasGroup.alpha = targetAlpha;
     }
 }
