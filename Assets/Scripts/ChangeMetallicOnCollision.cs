@@ -12,17 +12,9 @@ public class ChangeMetallicOnCollision : MonoBehaviour
     // 引用组合后的完整物体
     public GameObject combinedObject;
 
-    // 悬浮效果的参数
-    public float floatTargetHeight = 0.3f; // 悬浮目标高度
-    public float floatSpeed = 0.5f; // 悬浮速度
-
     // 音效相关
     public AudioClip sweepSound; // 播放的音效
     private AudioSource audioSource; // 音频源
-
-    private Vector3 originalPosition; // 记录组合物体的原始位置
-    private bool isFloating = false; // 是否正在悬浮
-    private bool hasReachedTargetHeight = false; // 是否已达到目标高度
 
     // 用于记录每个物体的清扫状态
     private bool[] cleanedStates;
@@ -149,14 +141,12 @@ public class ChangeMetallicOnCollision : MonoBehaviour
         return true; // 所有物体都已清扫
     }
 
-    // 显示组合后的完整物体并启动悬浮效果
+    // 显示组合后的完整物体
     private void ShowCombinedObject()
     {
         if (combinedObject != null)
         {
             combinedObject.SetActive(true);
-            originalPosition = combinedObject.transform.position; // 记录原始位置
-            isFloating = true; // 开始悬浮效果
             UnityEngine.Debug.Log("组合后的完整物体已显示！");
         }
         else
@@ -171,52 +161,6 @@ public class ChangeMetallicOnCollision : MonoBehaviour
             {
                 renderer.gameObject.SetActive(false);
             }
-        }
-
-        // 在悬浮效果完成后切换场景
-        StartCoroutine(SwitchSceneAfterFloating());
-    }
-
-    private IEnumerator SwitchSceneAfterFloating()
-    {
-        // 等待悬浮效果完成
-        while (!hasReachedTargetHeight)
-        {
-            yield return null;
-        }
-
-        // 悬浮效果完成后切换场景
-        UnityEngine.Debug.Log("悬浮效果完成，准备切换场景！");
-        SceneLoader.Instance.ChangeScene("视频介绍"); // 替换为你的目标场景名称
-    }
-
-    private void Update()
-    {
-        // 实现悬浮效果
-        if (isFloating && combinedObject != null)
-        {
-            if (!hasReachedTargetHeight)
-            {
-                // 计算目标位置
-                Vector3 targetPosition = originalPosition + new Vector3(0, floatTargetHeight, 0);
-
-                // 平滑移动到目标位置
-                combinedObject.transform.position = Vector3.MoveTowards(combinedObject.transform.position, targetPosition, floatSpeed * Time.deltaTime);
-
-                // 检查是否已到达目标高度
-                if (Vector3.Distance(combinedObject.transform.position, targetPosition) < 0.01f)
-                {
-                    hasReachedTargetHeight = true;
-                    combinedObject.transform.position = targetPosition; // 确保精确到达目标位置
-                    UnityEngine.Debug.Log("悬浮效果完成！");
-                }
-            }
-        }
-        // 检查是否需要停止音效
-        if (!isFloating && audioSource.isPlaying)
-        {
-            audioSource.Stop(); // 停止音效
-            UnityEngine.Debug.Log("音效已停止！");
         }
     }
 
