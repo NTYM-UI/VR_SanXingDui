@@ -1,0 +1,13 @@
+# Blender 4.3.2 MTL File: 'None'
+# www.blender.org
+
+newmtl defaultSG
+Ns 0.000000
+Ka 0.590000 0.590000 0.590000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd Mia_001146_Jue_64K_OBJ.jpeg
+map_refl Mia_001146_Jue_64K_OBJ_occlusion.jpeg
