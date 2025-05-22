@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class yaoganRay : MonoBehaviour
 {
-    //public GameObject testleftTeleportation; // 注意拼写错误，将 "letfTeleportation" 改为 "leftTeleportation"
+    //public GameObject testleftTeleportation; 
     public GameObject testrightTeleportation;
 
     //public InputActionProperty testleftActivate;
