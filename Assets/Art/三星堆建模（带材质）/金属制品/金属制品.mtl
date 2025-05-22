@@ -1,0 +1,12 @@
+# Blender 4.3.2 MTL File: '瓷器.blend'
+# www.blender.org
+
+newmtl 02_-_Default
+Ns 422.499969
+Ka 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 2.000000
+d 1.000000
+illum 3
+map_Kd -o 0 -1 0 1.jpg
