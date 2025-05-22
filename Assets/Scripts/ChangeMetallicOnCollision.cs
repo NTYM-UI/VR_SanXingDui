@@ -12,6 +12,12 @@ public class ChangeMetallicOnCollision : MonoBehaviour
     // 引用组合后的完整物体
     public GameObject combinedObject;
 
+    // 引用 Canvas
+    public Canvas canvas; // 添加 Canvas 引用
+
+    // 引用烟雾效果预制体
+    public GameObject smokePrefab; // 添加烟雾效果预制体
+
     // 音效相关
     public AudioClip sweepSound; // 播放的音效
     private AudioSource audioSource; // 音频源
@@ -30,6 +36,17 @@ public class ChangeMetallicOnCollision : MonoBehaviour
         else
         {
             UnityEngine.Debug.LogError("组合后的完整物体未设置！");
+        }
+
+        // 确保 Canvas 在游戏开始时是隐藏的
+        if (canvas != null)
+        {
+            canvas.gameObject.SetActive(false); // 隐藏 Canvas
+            UnityEngine.Debug.Log("Canvas 已隐藏！");
+        }
+        else
+        {
+            UnityEngine.Debug.LogError("Canvas 未设置！");
         }
 
         // 初始化音效
@@ -146,21 +163,77 @@ public class ChangeMetallicOnCollision : MonoBehaviour
     {
         if (combinedObject != null)
         {
-            combinedObject.SetActive(true);
-            UnityEngine.Debug.Log("组合后的完整物体已显示！");
+            combinedObject.SetActive(false); // 先隐藏完整物体
+            UnityEngine.Debug.Log("组合后的完整物体已隐藏！");
+
+            // 隐藏所有目标物体
+            Vector3 centerPosition = Vector3.zero; // 用于存储中心点位置
+            int count = 0; // 用于计数有效物体
+
+            foreach (Renderer renderer in targetRenderers)
+            {
+                if (renderer != null)
+                {
+                    renderer.gameObject.SetActive(false); // 隐藏目标物体
+                    centerPosition += renderer.transform.position; // 累加位置
+                    count++;
+                }
+            }
+
+            // 计算中心点位置
+            if (count > 0)
+            {
+                centerPosition /= count; // 求平均值
+            }
+
+            // 显示烟雾效果
+            if (smokePrefab != null)
+            {
+                GameObject smokeInstance = Instantiate(smokePrefab, centerPosition, Quaternion.identity);
+                smokeInstance.SetActive(true); // 确保烟雾效果被激活
+                UnityEngine.Debug.Log("烟雾效果已实例化并激活！");
+
+                StartCoroutine(ShowSmokeAndCombinedObject(smokeInstance));
+            }
+            else
+            {
+                UnityEngine.Debug.LogError("未设置烟雾效果预制体！");
+            }
         }
         else
         {
             UnityEngine.Debug.LogError("组合后的完整物体未设置！");
         }
+    }
 
-        // 隐藏所有目标物体
-        foreach (Renderer renderer in targetRenderers)
+    // 协程：显示烟雾效果并显示完整物体
+    private IEnumerator ShowSmokeAndCombinedObject(GameObject smokeInstance)
+    {
+        // 确保烟雾效果的粒子系统启动
+        ParticleSystem[] particleSystems = smokeInstance.GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem ps in particleSystems)
         {
-            if (renderer != null)
-            {
-                renderer.gameObject.SetActive(false);
-            }
+            ps.Play(); // 启动粒子系统
+        }
+
+        yield return new WaitForSeconds(2.0f); // 等待3秒
+
+        // 隐藏烟雾效果
+        Destroy(smokeInstance);
+
+        // 显示完整物体
+        combinedObject.SetActive(true);
+        UnityEngine.Debug.Log("组合后的完整物体已显示！");
+
+        // 显示 Canvas
+        if (canvas != null)
+        {
+            canvas.gameObject.SetActive(true); // 显示 Canvas
+            UnityEngine.Debug.Log("Canvas 已显示！");
+        }
+        else
+        {
+            UnityEngine.Debug.LogError("Canvas 未设置！");
         }
     }
 
